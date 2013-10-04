@@ -69,59 +69,169 @@
 
 
     <div class="step" data-x="2500" data-y="2000" data-scale="3">
-      <h1>Git Part II</h1>
+      <h1>Git Part II: When Things Go Wrong</h1>
     </div>
+
     <div class="step slide" data-x="3430" data-y="3600" data-z="-1200">
       <div class="toolbar">
         <span>~/tkml/projects/</span>
       </div>
-      <h2>Getting a Setup</h2>
+      <h2>Warning!</h2>
       <ul>
-        <li> > git init</li>
-        <li> > git clone git@github.com:Tukaiz/backstage_build_3.git</li>
+        <li>Time traveling and undoing things can alter the future! (leave your database in an inconsistent state)</li>
+        <li>This may result in having to re-run db migrations.</li>
       </ul>
     </div>
+
     <div class="step slide" data-x="3450" data-y="2800" data-z="-800">
       <div class="toolbar">
         <span>~/tkml/projects/</span>
       </div>
-      <h2>Working with Files</h2>
+      <h2>git revert</h2>
       <ul>
-        <li> > git add &lt;filename or path&gt;</li>
-        <li> > git status</li>
-        <li> > git checkout -- &lt;filename&gt;</li>
-        <li> > git diff</li>
-        <li> > git reset --hard HEAD^</li>
-        <li> > git add *</li>
-        <li> > git add -A</li>
-        <li> > git commit -m "Commit message"</li>
+        <li>Remove / Undo Committed Code</li>
+        <li>Creates an inverse COMMIT of a previous commit</li>
+        <li>This makes the commit in whatever branch your in!</li>
+        <li>If your testing things out you should create a branch first e.g git checkout -b myFixBranch</li>
+        <li>Example git revert e1c5a54</li>
       </ul>
     </div>
-    <div class="step slide" data-x="3470" data-y="2000" data-z="-400">
+
+    <div class="step slide" data-x="3470" data-y="2000">
       <div class="toolbar">
         <span>~/tkml/projects/</span>
       </div>
-      <h2>Branches not Streams or Workspaces</h2>
+      <h2>git log</h2>
       <ul>
-        <li> > git checkout uat</li>
-        <li> > git checkout -b feature_x</li>
-        <li> > git push origin feature_x</li>
-        <li> > git branch -d feature_x</li>
-        <li> > git pull &lt;branch&gt;</li>
-        <li> > git merge  &lt;branch&gt;</li>
+        <li>A useful tool for dealing with issues</li>
+        <li>(by default) shows the commit history from the tip of your current branch.</li>
+        <li>Useful for seeing when things happened.</li>
+        <li>Gives you sha's for doing other operations, such as revert.</li>
       </ul>
     </div>
+
     <div class="step slide" data-x="3490" data-y="1200">
       <div class="toolbar">
         <span>~/tkml/projects/</span>
       </div>
-        <h2>Some Extras</h2>
-        <ul>
-          <li> > git tag -a v1.2 -m 'version 1.2' &lt;sha or checksum&gt;</li>
-          <li> > git push origin --tags</li>
-          <li>GitX - http://gitx.laullon.com/</li>
-          <li>SourceTree - http://www.sourcetreeapp.com/</li>
-        </ul>
+      <h2>git reflog</h2>
+      <ul>
+        <li>Shows your whole history of actions such as merges, checkouts, commits etc.</li>
+        <li>This is your safety net.  You can use this to give you a better understanding of what has happened and how to get back to stability.</li>
+        <li>Useful if you get lost in time travel.  Your map back home.</li>
+        <li>You have to try really hard to loose data in git.  Things may seem like they are lost but reflog will help you find the data again.</li>
+      </ul>
+    </div>
+
+    <div class="step slide" data-x="3510" data-y="400">
+      <div class="toolbar">
+        <span>~/tkml/projects/</span>
+      </div>
+      <h2>git reset</h2>
+      <ul>
+        <li>Changes HEAD (the tip of your current branch) to the sha you indicate.</li>
+        <li>Useful for time travel</li>
+        <li>--hard option will  change all files in your directory to that point in time blowing away all modified files</li>
+        <li>Not specifying --hard will move your HEAD pointer but will keep all files and indicate them as modified.</li>
+      </ul>
+    </div>
+
+    <div class="step slide" data-x="3530" data-y="-400">
+      <div class="toolbar">
+        <span>~/tkml/projects/</span>
+      </div>
+      <h2>I made a commit that I didn't push that I don't want... What to do?</h2>
+      <ul>
+        <li>git reset --hard sha_here</li>
+        <li>Make sure to stash or branch off any un-committed files as they will be blown away!</li>
+      </ul>
+    </div>
+
+    <div class="step slide" data-x="3550" data-y="-1200">
+      <div class="toolbar">
+        <span>~/tkml/projects/</span>
+      </div>
+      <h2>I'm on detached head... What the heck is that?</h2>
+      <ul>
+        <li>If you do git branch you will see * (no branch)</li>
+        <li>You are no longer working on a branch</li>
+        <li>You got here by checking out a particular commit.</li>
+        <li>Commits made here are in never never land... (sort of)</li>
+        <li>If you have not made any changes or commits, you can get home by git checkout the branch you want to be on.</li>
+      </ul>
+    </div>
+
+    <div class="step slide" data-x="3570" data-y="-2000">
+      <div class="toolbar">
+        <span>~/tkml/projects/</span>
+      </div>
+      <h2>What if I did make a commit in never never land?</h2>
+      <ul>
+        <li>Warning: you are leaving 1 commit behind, not connected to any of your branches:1430509 Commit to never never land.If you want to keep them by creating a new branch, this may be a good time to do so with:git branch new_branch_name 14305098050a1ab868896b1fecda88da3166c1d9</li>
+
+      </ul>
+    </div>
+
+    <div class="step slide" data-x="3590" data-y="-2800">
+      <div class="toolbar">
+        <span>~/tkml/projects/</span>
+      </div>
+      <h2>Oh No... Conflict!!!</h2>
+      <ul>
+        <li>CONFLICT (content): Merge conflict in sample.txt Automatic merge failed; fix conflicts and then commit the result.<br />
+        git status will show you files with conflicts<br />
+        both modified:      sample.txt<br />
+        <<<<<<< HEAD<br />
+        Conflicting commit.<br />
+        =======<br />
+        Conflict will happen<br />
+        >>>>>>> SampleBranch</li>
+
+      </ul>
+    </div>
+
+    <div class="step slide" data-x="3610" data-y="-3600">
+      <div class="toolbar">
+        <span>~/tkml/projects/</span>
+      </div>
+      <h2>Fix conflict</h2>
+      <ul>
+        <li>Simply delete the unwanted stuff including the lines added by git.  Example:<br />
+        <<<<<<< HEAD<br />
+        Conflicting commit.<br />
+        =======<br />
+        Conflict will happen<br />
+        >>>>>>> SampleBranch<br />
+        <br />
+        becomes:<br />
+        Conflict will happen
+        </li>
+      </ul>
+    </div>
+
+    <div class="step slide" data-x="3630" data-y="-4400">
+      <div class="toolbar">
+        <span>~/tkml/projects/</span>
+      </div>
+      <h2>Save Changes</h2>
+      <ul>
+        <li>Save file</li>
+        <li>git add</li>
+        <li>git commit</li>
+        <li>Done!</li>
+      </ul>
+    </div>
+
+    <div class="step slide" data-x="3650" data-y="-5200">
+      <div class="toolbar">
+        <span>~/tkml/projects/</span>
+      </div>
+      <h2>git diff</h2>
+      <ul>
+        <li>Show the differences between:</li>
+        <li>Current HEAD and another branch e.g git diff branch_name</li>
+        <li>Current HEAD and a commit sha e.g git diff sha</li>
+      </ul>
     </div>
 
     <div id="overview_2" class="step" data-x="3500" data-y="1400" data-scale="1.5">
