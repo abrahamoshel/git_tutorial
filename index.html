@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Browser Support</title>
+  <meta name="viewport" content="width=1280" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" type="text/css" href="stylesheets/base.css" />
+  <link href='http://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id="impress">
+    <div class="step" data-x="-2500" data-y="-2000" data-scale="3">
+      <h1>Git Part I</h1>
+    </div>
+    <div class="step slide" data-x="-1550" data-y="1600" data-z="-800">
+      <div class="toolbar">
+        <span>~/tkml/projects/</span>
+      </div>
+      <h2>Getting a Setup</h2>
+      <p>git init</p>
+      <p>git clone https://github.com/bartaz/impress.js.git</p>
+      <p>Point 9</p>
+    </div>
+    <div class="step slide" data-x="-1530" data-y="800" data-z="-400">
+      <div class="toolbar">
+        <span>~/tkml/projects/</span>
+      </div>
+      <h2>Getting a Setup</h2>
+      <p>git add <filename or path></p>
+      <p>git add *</p>
+      <p>git commit -m "Commit message"</p>
+      <p>git push origin master</p>
+    </div>
+    <div class="step slide" data-x="-1500" data-y="0">
+      <div class="toolbar">
+        <span>~/tkml/projects/</span>
+      </div>
+      <h2>Getting a Setup</h2>
+      <p>git checkout -b feature_x</p>
+      <p>git checkout master</p>
+      <p>git branch -d feature_x</p>
+      <p>git pull</p>
+      <p>git merge <branch></p>
+      <p>git tag -a v1.2 -m 'version 1.2' <sha or checksum></p>
+      <p>git push origin --tags</p>
+      <p>git checkout -- <filename></p>
+      <p>git status</p>
+      <p>git diff</p>
+      <p>git add *</p>
+      <p>git add -A</p>
+      <p>GitX - http://gitx.laullon.com/</p>
+      <p>SourceTree - http://www.sourcetreeapp.com/</p>
+    </div>
+    <div id="overview" class="step" data-x="-1500" data-y="150" data-scale="1.5">
+    </div>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="javascript/impress.js"></script>
+  <script>impress().init();</script></body>
+</html>
